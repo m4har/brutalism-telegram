@@ -3,9 +3,9 @@ import { DotContainer } from "@/components/ui/dot-container";
 
 function App() {
   return (
-    <div className="not-prose m400:text-sm ">
+    <div className="w-full flex items-center justify-center h-screen p-5">
       <DotContainer>
-        <div className="flex flex-col gap-5">
+        <div>
           <Button>Hello world</Button>
         </div>
       </DotContainer>
