@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
 import { DotContainer } from "@/components/ui/dot-container";
+import { AxieFigure } from "./components/avatar/AxieFigure";
 
 function App() {
   return (
-    <div className="w-full flex items-center justify-center h-screen p-5">
+    <div className="w-screen flex items-center justify-center h-screen p-5">
       <DotContainer>
         <div>
-          <Button>Hello world</Button>
+          <AxieFigure />
         </div>
       </DotContainer>
     </div>
