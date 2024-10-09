@@ -51,7 +51,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="w-[300px] h-[300px]">
+        <div className="w-[250px] h-[250px]">
           <AxieFigure />
         </div>
       </DotContainer>
