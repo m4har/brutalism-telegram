@@ -140,7 +140,7 @@ export const AxieFigure = () => {
       resolution: window.devicePixelRatio,
       autoStart: true,
       width: offsetWidth,
-      height: offsetHeight,
+      height: offsetHeight + 100,
       // backgroundColor: 0x282b39,
     });
 

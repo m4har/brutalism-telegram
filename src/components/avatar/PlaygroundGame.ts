@@ -43,10 +43,11 @@ export class PlaygroundGame extends PIXI.Application {
       );
       currentFigure.currentSpine = figure;
       currentFigure.addChild(figure);
-      currentFigure.changeCurrentAnimation("action/idle/random-01", true);
-      currentFigure.vx = 0;
+      currentFigure.changeCurrentAnimation("draft/run-origin", true);
+      // speed
+      currentFigure.vx = 1;
       currentFigure.position.set(this.offsetWidth / 2, this.offsetHeight - 130);
-      contain(currentFigure, { width: 700, height: 500 });
+      contain(currentFigure, { width: 300, height: 300 });
 
       this.stage?.addChild(currentFigure);
       this.currentFigure = currentFigure;
@@ -56,11 +57,26 @@ export class PlaygroundGame extends PIXI.Application {
     this.stage?.on("pointerdown", () => {
       this.currentFigure.changeCurrentAnimation("action/idle/random-02", false);
       this.currentFigure.changeCurrentAnimation("action/idle/normal", true, 1);
+      this.currentFigure.vx = 0;
     });
 
     const play = (delta) => {
       if (this.currentFigure) {
         this.currentFigure.x += this.currentFigure.vx;
+
+        // Check if the figure has reached the screen boundary, and reverse direction
+        if (
+          this.currentFigure.x >=
+          this.offsetWidth - this.currentFigure.width + 100
+        ) {
+          this.currentFigure.vx = -Math.abs(this.currentFigure.vx); // Move left
+          this.currentFigure.currentSpine.scale.x = 0.18 * AxieDirection.Left;
+          this.currentFigure.changeCurrentAnimation("draft/run-origin", true);
+        } else if (this.currentFigure.x <= 0) {
+          this.currentFigure.vx = Math.abs(this.currentFigure.vx); // Move right
+          this.currentFigure.currentSpine.scale.x = 0.18 * AxieDirection.Right;
+          this.currentFigure.changeCurrentAnimation("draft/run-origin", true);
+        }
       }
     };
 
